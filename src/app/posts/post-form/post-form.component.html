@@ -1,0 +1,73 @@
+<div class="card">
+  <h3>{{ post.id === undefined ? "Insert new post" : "Edit post" }}</h3>
+  <div class="p-field p-grid">
+    <div class="p-col">
+      <span class="p-input-icon-left">
+        <i class="pi pi-tag"></i>
+        <input
+          type="text"
+          pInputText
+          [(ngModel)]="post.title"
+          placeholder="Title"
+        />
+      </span>
+    </div>
+  </div>
+  <div class="p-field p-grid">
+    <div class="p-col">
+      <span class="p-input-icon-left">
+        <i class="pi pi-align-justify"></i>
+        <textarea
+          [rows]="2"
+          [cols]="25"
+          pInputTextarea
+          [autoResize]="autoResize"
+          [(ngModel)]="post.body"
+        ></textarea>
+      </span>
+    </div>
+  </div>
+
+  <div class="p-field p-grid">
+    <div class="p-col">
+      <span class="p-input-icon-left">
+        <i class="pi pi-user"></i>
+        <input
+          type="text"
+          pInputText
+          [(ngModel)]="post.userId"
+          placeholder="UserID"
+        />
+      </span>
+    </div>
+  </div>
+  <div class="button-group">
+    <button
+      *ngIf="post.id === undefined; else elseBlock"
+      pButton
+      type="button"
+      class="p-button-raised"
+      label="Create"
+      (click)="save(post)"
+    ></button>
+
+    <ng-template #elseBlock>
+      <button
+        pButton
+        (click)="edit(post)"
+        type="button"
+        class="p-button-raised"
+        label="Edit"
+      ></button>
+    </ng-template>
+
+    <button
+      style="background-color: #fc5d5d; border-color: #fc5d5d"
+      pButton
+      type="button"
+      class="p-button-raised"
+      label="Cancel"
+      (click)="cancel()"
+    ></button>
+  </div>
+</div>

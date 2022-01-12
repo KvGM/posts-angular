@@ -1,0 +1,59 @@
+<div class="card">
+  <span style="margin: 5px 0" class="p-input-icon-left">
+    <i class="pi pi-search"></i>
+    <input
+      type="text"
+      pInputText
+      (input)="filter($event)"
+      placeholder="Search by User ID"
+    />
+  </span>
+  <p-table
+    [value]="posts | filter: filterPost"
+    styleClass="p-datatable-striped"
+    [paginator]="true"
+    [rows]="10"
+    [showCurrentPageReport]="true"
+    responsiveLayout="scroll"
+    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+    [rowsPerPageOptions]="[10, 20, 30]"
+  >
+    <ng-template pTemplate="header">
+      <tr>
+        <th>ID</th>
+        <th>Title</th>
+        <th>Body</th>
+        <th>UserID</th>
+        <th>Actions</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-post>
+      <tr *ngIf="post.id != null">
+        <td>{{ post.id }}</td>
+        <td>{{ post.title }}</td>
+        <td>{{ post.body }}</td>
+        <td>{{ post.userId }}</td>
+        <td class="button-group">
+          <button
+            pButton
+            (click)="edit(post.id)"
+            style="background-color: #6ecba0; border-color: #6ecba0"
+            class="p-button-raised p-button-rounded"
+            type="button"
+            icon="pi pi-pencil"
+            iconPos="left"
+          ></button>
+          <button
+            pButton
+            (click)="delete(post.id)"
+            style="background-color: #f35b5b; border-color: #f35b5b"
+            class="p-button-raised p-button-rounded"
+            type="button"
+            icon="pi pi-trash"
+            iconPos="left"
+          ></button>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>

@@ -1,0 +1,12 @@
+.p-col {
+  margin: 5px 0;
+}
+input[type="text"],
+.input-number {
+  width: 243px;
+}
+
+button {
+  margin: 5px 20px;
+  color: #fff;
+}

@@ -1,0 +1,11 @@
+button {
+  margin: 5px;
+  text-align: center;
+}
+.button-group {
+  width: 100px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
